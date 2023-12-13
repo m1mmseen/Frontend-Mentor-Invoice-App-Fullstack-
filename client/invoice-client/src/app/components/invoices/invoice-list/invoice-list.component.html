@@ -1,0 +1,20 @@
+<div class="invoice-list-header">
+  <div class="title">
+    <div class="headline">Invoices</div>
+    <div *ngIf="invoices" class="subtitle">{{invoices.length}}</div>
+  </div>
+  <div class="invoice-actions">
+    <div class="filter">
+      <span>Filter</span>
+      <img src="assets/icon-arrow-down.svg" alt="">
+    </div>
+    <btn data-btn-class="general"></btn>
+  </div>
+</div>
+
+<invoice-list-item
+  *ngFor="let invoice of invoices"
+  [invoice]="invoice"
+  routerLink="/invoice-details/{{invoice.id}}">
+</invoice-list-item>
+

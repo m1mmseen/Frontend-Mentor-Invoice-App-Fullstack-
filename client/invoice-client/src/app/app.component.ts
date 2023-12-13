@@ -1,4 +1,8 @@
 import { Component } from '@angular/core';
+import {HttpClient, HttpClientModule} from "@angular/common/http";
+import {Invoice} from "./interfaces";
+import {Observable} from "rxjs";
+import {InvoiceService} from "./services/invoice.service";
 
 @Component({
   selector: 'app-root',
@@ -7,4 +11,10 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'invoice-client';
+
+
+  constructor(private http: HttpClient, private invoiceService: InvoiceService) {
+  }
+
+
 }

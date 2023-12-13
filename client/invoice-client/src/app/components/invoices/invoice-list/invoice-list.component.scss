@@ -1,0 +1,107 @@
+@use '../../../../index' as *;
+
+:host {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  height:100svh;
+  overflow-y: scroll;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+
+.invoice-list-header {
+  padding: 2rem ;
+  width: 87%;
+  display: flex;
+  justify-content: space-between;
+}
+.title {
+  text-align: left;
+  .headline{
+    @include text-headline();
+  }
+
+}
+
+.subtitle {
+  @include text-secondary();
+  color: var(--text-secondary-color);
+
+  &::after {
+    content: " Invoices";
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .subtitle {
+
+    &::before {
+      content: "There are ";
+    }
+
+    &::after {
+      content: " total Invoices";
+    }
+  }
+}
+
+.invoice-actions {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.filter{
+  padding-inline: 5px;
+
+  span {
+    margin-right: .5rem;
+  }
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.btn-new {
+    width: 32px;
+    height: 32px;
+    background: white;
+}
+
+[data-btn-class="general"]{
+  position: relative;
+}
+[data-btn-class="general"]::before {
+  content: "";
+  background-image: url("../../../../assets/icon-plus.svg"), linear-gradient(white, white);
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 32px;
+  height: 32px;
+  position: absolute;
+  left: 8px;
+  bottom: 11px;
+  border-radius: 50%;
+}
+[data-btn-class="general"]::after {
+  content: "New";
+  position: absolute;
+  right: 9px;
+  bottom: 16px;
+  border-radius: 50%;
+  @include text-primary();
+  color: var(--btn-text-primary-clr);
+}
+
+@media screen and (min-width: 768px) {
+  [data-btn-class="general"]::after  {
+    content: "New Invoice";
+    right: 15px;
+  }
+
+}

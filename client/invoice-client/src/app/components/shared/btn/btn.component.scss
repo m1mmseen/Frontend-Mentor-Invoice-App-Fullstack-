@@ -1,0 +1,14 @@
+@use '../../../../index' as *;
+
+button {
+  border-radius: 24px;
+  height: $primary-height;
+  border: none;
+  @include text-primary();
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+

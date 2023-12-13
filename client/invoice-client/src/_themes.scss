@@ -1,0 +1,104 @@
+[data-theme="light"] {
+  --main-content-background-color: hsl(240, 27%, 98%);
+  --invoice-card-clr: hsla(0, 0%, 100%, 1);
+  --text-primary-clr: hsla(231, 28%, 7%, 1);
+  --text-secondary-color:hsla(231, 36%, 63%, 1);
+  --text-tertiary-clr: hsla(231, 23%, 61%, 1);
+  --text-highlight-clr:hsla(252, 94%, 67%, 1);
+  --btn-text-primary-clr: hsla(0, 0%, 100%, 1);
+  --btn-text-secondary-clr: hsla(231, 36%, 63%, 1);
+  --btn-text-tertiary-clr: hsla(231, 20%, 61%, 1);
+  --btn-primary-clr: hsl(252, 94%, 67%);
+  --btn-primary-hover-clr:hsla(252, 100%, 73%, 1);
+  --btn-delete-clr: hsla(0, 80%, 63%, 1);
+  --btn-delete-hover-clr: hsla(0, 100%, 80%, 1);
+  --btn-edit-clr: hsla(231, 67%, 99%, 1);
+  --btn-edit-hover-clr: hsla(231, 73%, 93%, 1);
+  --btn-new-clr: hsla(231, 67%, 99%, 1);
+  --btn-new-hover-clr: hsla(231, 73%, 93%, 1);
+  --btn-draft-clr:hsla(231, 20%, 27%, 1);
+  --btn-draft-bg-clr: hsla(231, 20%, 27%, 0.05) ;
+}
+
+[data-theme="dark"] {
+  --main-content-background-color: hsl(233, 30%, 11%);
+  --invoice-card-clr: hsla(233, 31%, 17%, 1);
+  --text-primary-clr: hsla(0, 0%, 100%, 1);
+  --text-secondary-color:hsla(231, 36%, 63%, 1);
+  --text-tertiary-clr: hsla(231, 75%, 93%, 1);
+  --text-highlight-clr:hsla(252, 94%, 67%, 1);
+  --btn-text-primary-clr: hsla(0, 0%, 100%, 1);
+  --btn-text-secondary-clr: hsla(231, 36%, 63%, 1);
+  --btn-text-tertiary-clr: hsla(231, 20%, 61%, 1);
+  --btn-primary-clr: hsl(252, 94%, 67%);
+  --btn-primary-hover-clr:hsla(252, 100%, 73%, 1);
+  --btn-delete-clr: hsla(0, 80%, 63%, 1);
+  --btn-delete-hover-clr: hsla(0, 100%, 80%, 1);
+  --btn-edit-clr: hsla(233, 30%, 21%, 1);
+  --btn-edit-hover-clr: hsla(0, 0%, 100%, 1);
+  --btn-new-clr: hsla(231, 67%, 99%, 1);
+  --btn-new-hover-clr: hsla(231, 73%, 93%, 1);
+  --btn-draft-clr:hsla(231, 75%, 93%, 1);
+  --btn-draft-bg-clr: hsla(231, 75%, 93%, 0.05) ;
+}
+[data-btn-class="delete"] {
+  button {
+    background: var(--btn-delete-clr);
+    color: var(--btn-text-primary-clr);
+    width: 89px;
+
+    &:hover {
+      background: var(--btn-delete-hover-clr);
+    }
+  }
+}
+
+[data-btn-class="edit"] {
+  button {
+    background: var(--btn-edit-clr);
+    color: var(--btn-text-secondary-clr);
+    width: 73px;
+
+
+    &:hover {
+      background: var(--btn-edit-hover-clr);
+    }
+  }
+}
+
+[data-btn-class="new"] {
+  button {
+    background: var(--btn-new-clr);
+    color: var(--btn-text-secondary-clr);
+    width: 89px;
+
+
+    &:hover {
+      background: var(--btn-new-hover-clr);
+    }
+  }
+
+  @media screen and (min-width: 768px) {
+    button {
+      width: 150px;
+    }
+  }
+}
+
+[data-btn-class="general"] {
+  button {
+    background: var(--btn-primary-clr);
+    color: var(--btn-text-primary-clr);
+    width: 89px;
+
+    &:hover {
+      background: var(--btn-primary-hover-clr);
+    }
+  }
+  @media screen and (min-width: 768px) {
+    button {
+      width: 150px;
+    }
+  }
+}
+

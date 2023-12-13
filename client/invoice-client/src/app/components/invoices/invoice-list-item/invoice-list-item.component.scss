@@ -1,0 +1,121 @@
+@use '../../../../index' as *;
+
+:host {
+  box-sizing: border-box;
+  background: var(--invoice-card-clr);
+  box-shadow: 0 10px 10px -10px rgba(72, 84, 159, 0.10);
+  border-radius: 8px;
+  padding: 1rem;
+  height: 134px;
+  width: 87%;
+  display: grid;
+  grid-template-rows: repeat(2, 1fr);
+  grid-template-columns: repeat(2, 1fr) ;
+  grid-template-areas:
+        'id client'
+        'dueDate status'
+        'total status';
+
+  align-items: center;
+  justify-items: flex-start;
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  :host {
+    height: 72px;
+    grid-template-rows: 1fr;
+    grid-template-columns: repeat(5, 1fr) ;
+    grid-template-areas:
+        'id dueDate client total status';
+    position: relative;
+  }
+
+  :host::after {
+    content: "";
+    background-image: url("/assets/icon-arrow-right.svg");
+    background-repeat: no-repeat;
+    width: 10px;
+    height: 10px;
+    position: absolute;
+    right: 10px;
+  }
+}
+.invoice-id {
+  grid-area: id;
+}
+
+.invoice-id::before{
+  content: "#";
+  color: var(--text-secondary-color);
+}
+
+.client-name {
+  color: var(--text-tertiary-clr);
+  grid-area: client;
+  justify-self: flex-end;
+}
+
+
+.due-date{
+  color: var(--text-tertiary-clr);
+}
+.due-date::before{
+    content: "Due ";
+    color: var(--text-tertiary-clr);
+  }
+
+.total::before{
+  content: "£ ";
+  }
+
+.payment-status {
+  grid-area: status;
+  justify-self: flex-end;
+  width: 104px;
+  height: 40px;
+  border-radius: 6px;
+  text-transform: capitalize;
+  background: var(--status-bg-clr);
+  color: var(--status-clr);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  span {
+    position: relative;
+  }
+  span::before{
+    content: "";
+    width: 8px;
+    height: 8px;
+    background: var(--status-clr);
+    position: absolute;
+    border-radius: 50%;
+    left: -16px;
+    top: 2px;
+  }
+}
+@media screen and (min-width: 768px) {
+  .client-name {
+    justify-self: flex-start;
+  }
+  .payment-status {
+    justify-self: inherit;
+  }
+}
+
+.paid {
+  --status-clr: hsla(160, 67%, 52%, 1);
+  --status-bg-clr: hsla(160, 67%, 52%, 0.05);
+}
+.pending {
+  --status-clr: hsla(34, 100%, 50%, 1);
+  --status-bg-clr: hsla(34, 100%, 50%, 0.05);
+}
+.draft {
+  --status-clr: var(--btn-draft-clr);
+  --status-bg-clr: var(--btn-draft-bg-clr);
+}

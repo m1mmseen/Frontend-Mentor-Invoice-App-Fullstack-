@@ -1,1 +1,37 @@
-/* You can add global styles to this file, and also import other style files */
+@use 'index' as *;
+
+html, body { height: 100%; }
+
+body {
+  margin: 0;
+  background: var(--main-content-background-color);
+  color: var(--text-primary-clr);
+  font-family: "League Spartan", sans-serif;
+  @include text-primary();
+  overflow: hidden;
+}
+
+.flex-row{
+  display: flex;
+  flex-direction: row;
+}
+.space-between {
+  justify-content: space-between;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--btn-primary-clr);
+  box-shadow: inset 1px 1px 10px 2px white;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--btn-primary-hover-clr);
+  border-radius: 5px;
+  box-shadow: inset 0 0 5px 0 white;
+}
+
+
