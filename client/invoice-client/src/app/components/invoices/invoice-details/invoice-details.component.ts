@@ -26,7 +26,9 @@ export class InvoiceDetailsComponent implements OnInit{
       });
     })
 
+
   }
 
 
+    protected readonly window = window;
 }

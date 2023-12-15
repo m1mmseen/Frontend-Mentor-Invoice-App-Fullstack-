@@ -1,0 +1,211 @@
+@use '../../../../index' as *;
+
+:host {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 1rem;
+  height:100svh;
+  overflow-y: scroll;
+  padding-bottom: 500px;
+
+}
+
+.details-navigation {
+  width: 87%;
+  display: flex;
+  align-items: center;
+  img {
+    width: 10px;
+    height: 10px;
+    margin-bottom: 2px;
+  }
+
+  button {
+    background: none;
+    border: none;
+    @include text-primary();
+    color: var(--text-primary-clr)
+  }
+}
+
+.invoice-actions {
+  width: 87%;
+  height: 91px;
+  background: var(--invoice-card-clr);
+  @include card();
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.invoice-status {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  height: 90px;
+
+  small {
+    color: var(--text-secondary-clr);
+  }
+}
+
+.invoice-btn-group {
+  background: var(--invoice-card-clr);
+  padding: 1rem 0;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: stretch;
+  gap: .3rem;
+}
+
+
+@media screen and (min-width: 768px) {
+  .invoice-status {
+    justify-content: flex-start;
+  }
+  .invoice-btn-group {
+    position: static;
+    justify-content: space-around;
+  }
+}
+
+.invoice {
+  width: 87%;
+  @include card();
+  background: var(--invoice-card-clr);
+  @include text-secondary();
+  color: var(--text-tertiary-clr);
+  text-align: left;
+  padding: 1rem;
+
+}
+
+.invoice-details {
+  display: grid;
+  grid-template-areas: 'invoice-header invoice-header'
+  'sender-address sender-address'
+  'billing-information client-address'
+  'send-to send-to';
+  row-gap: 1rem;
+  p {
+    margin: 0.3rem 0;
+  }
+}
+
+.invoice-id::before {
+  content: "#";
+  color: var(--text-secondary-clr);
+}
+
+.invoice-header {
+  grid-area: invoice-header;
+}
+
+.sender-address{
+  grid-area: sender-address;
+}
+
+.billing-information {
+  grid-area: billing-information;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.client-address {
+  grid-area: client-address;
+}
+
+.send-to {
+  grid-area: send-to;
+}
+
+@media screen and (min-width: 768px) {
+  .invoice-details {
+    grid-template-areas:
+    'invoice-header invoice-header invoice-header sender-address'
+    'billing-information client-address send-to send-to';
+
+    .sender-address{
+      text-align: right;
+    }
+  }
+}
+
+
+.items {
+  margin-top: 20px;
+
+  table {
+    width: 100%;
+    @include items();
+    th {
+      font-weight: 500;
+      padding-bottom: .5rem;
+      &:nth-of-type(2) {
+        text-align: center;
+      }
+
+      &:last-of-type, &:nth-of-type(3) {
+        text-align: right;
+      }
+    }
+
+    td {
+      @include text-primary();
+      padding: .7rem 0;
+
+      &:not(:first-of-type), &:not(:last-of-type) {
+      }
+
+      &:first-of-type {
+        text-align: left;
+      }
+      &:last-of-type, &:nth-of-type(3) {
+        text-align: right;
+      }
+    }
+  }
+
+  .amount {
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem;
+    border-radius: 0 0 8px 8px;
+    background: hsla(231, 20%, 27%, 1);
+    color: hsla(0, 0%, 100%, 1);
+  }
+  .item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    @include items();
+  }
+
+  .currency::before {
+    content: "£ ";
+  }
+}
+
+.accent {
+  @include text-primary();
+  color: var(--text-primary-clr);
+  text-align: left;
+  padding: .5rem 0;
+}
+
+@media screen and (min-width: 1440px) {
+  .details-navigation, .invoice-actions, .invoice {
+    width: 60%;
+  }
+}
+

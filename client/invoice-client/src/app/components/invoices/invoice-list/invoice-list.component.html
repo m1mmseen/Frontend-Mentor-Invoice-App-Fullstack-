@@ -1,20 +1,35 @@
 <div class="invoice-list-header">
   <div class="title">
     <div class="headline">Invoices</div>
-    <div *ngIf="invoices" class="subtitle">{{invoices.length}}</div>
+    <div *ngIf="invoices.length === 0" class="subtitle-empty">No </div>
+    <div *ngIf="filteredInvoices && filteredInvoices.length != 0" class="subtitle">{{filteredInvoices.length}}</div>
   </div>
   <div class="invoice-actions">
-    <div class="filter">
+    <div class="filter" (click)="openFilter()">
       <span>Filter</span>
       <img src="assets/icon-arrow-down.svg" alt="">
+        <div class="filter-content hidden">
+          <div class="filter-item" *ngFor="let filterValue of filterValues">
+            <input type="checkbox" id="{{filterValue}}" (change)="addFilter(filterValue)" [checked]="selected === filterValue"><label for="{{filterValue}}">{{filterValue}}</label>
+          </div>
+        </div>
     </div>
     <btn data-btn-class="general"></btn>
   </div>
 </div>
 
+
 <invoice-list-item
-  *ngFor="let invoice of invoices"
+  *ngFor="let invoice of filteredInvoices"
   [invoice]="invoice"
   routerLink="/invoice-details/{{invoice.id}}">
 </invoice-list-item>
 
+
+
+<div class="empty-invoice-list" *ngIf="invoices.length === 0">
+  <img src="assets/illustration-empty.svg" alt="woman in an envelop">
+  <h1>There is nothing here</h1>
+  <p>  Create an invoice by clicking the
+    New Invoice button and get started</p>
+</div>

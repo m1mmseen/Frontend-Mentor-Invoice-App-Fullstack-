@@ -9,7 +9,7 @@
   --main-content-background-color: hsl(240, 27%, 98%);
   --invoice-card-clr: hsla(0, 0%, 100%, 1);
   --text-primary-clr: hsla(231, 28%, 7%, 1);
-  --text-secondary-color:hsla(231, 36%, 63%, 1);
+  --text-secondary-clr:hsla(231, 36%, 63%, 1);
   --text-tertiary-clr: hsla(231, 23%, 61%, 1);
   --text-highlight-clr:hsla(252, 94%, 67%, 1);
   --btn-text-primary-clr: hsla(0, 0%, 100%, 1);
@@ -24,14 +24,15 @@
   --btn-new-clr: hsla(231, 67%, 99%, 1);
   --btn-new-hover-clr: hsla(231, 73%, 93%, 1);
   --btn-draft-clr:hsla(231, 20%, 27%, 1);
-  --btn-draft-bg-clr: hsla(231, 20%, 27%, 0.05) ;
+  --btn-draft-bg-clr: hsla(231, 20%, 27%, 0.05);
+  --item-bg: hsla(231, 67%, 99%, 1);
 }
 
 [data-theme=dark] {
   --main-content-background-color: hsl(233, 30%, 11%);
   --invoice-card-clr: hsla(233, 31%, 17%, 1);
   --text-primary-clr: hsla(0, 0%, 100%, 1);
-  --text-secondary-color:hsla(231, 36%, 63%, 1);
+  --text-secondary-clr:hsla(231, 36%, 63%, 1);
   --text-tertiary-clr: hsla(231, 75%, 93%, 1);
   --text-highlight-clr:hsla(252, 94%, 67%, 1);
   --btn-text-primary-clr: hsla(0, 0%, 100%, 1);
@@ -46,7 +47,8 @@
   --btn-new-clr: hsla(231, 67%, 99%, 1);
   --btn-new-hover-clr: hsla(231, 73%, 93%, 1);
   --btn-draft-clr:hsla(231, 75%, 93%, 1);
-  --btn-draft-bg-clr: hsla(231, 75%, 93%, 0.05) ;
+  --btn-draft-bg-clr: hsla(231, 75%, 93%, 0.05);
+  --item-bg: hsla(233, 30%, 21%, 1);
 }
 
 [data-btn-class=delete] button {
@@ -95,6 +97,15 @@
   }
 }
 
+[data-btn-class=paid] button {
+  background: var(--btn-primary-clr);
+  color: var(--btn-text-primary-clr);
+  width: 149px;
+}
+[data-btn-class=paid] button:hover {
+  background: var(--btn-primary-hover-clr);
+}
+
 :host {
   box-sizing: border-box;
   background: var(--invoice-card-clr);
@@ -132,13 +143,18 @@
     right: 10px;
   }
 }
+@media screen and (min-width: 1440px) {
+  :host {
+    width: 60%;
+  }
+}
 .invoice-id {
   grid-area: id;
 }
 
 .invoice-id::before {
   content: "#";
-  color: var(--text-secondary-color);
+  color: var(--text-secondary-clr);
 }
 
 .client-name {
@@ -163,28 +179,6 @@
 .payment-status {
   grid-area: status;
   justify-self: flex-end;
-  width: 104px;
-  height: 40px;
-  border-radius: 6px;
-  text-transform: capitalize;
-  background: var(--status-bg-clr);
-  color: var(--status-clr);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.payment-status span {
-  position: relative;
-}
-.payment-status span::before {
-  content: "";
-  width: 8px;
-  height: 8px;
-  background: var(--status-clr);
-  position: absolute;
-  border-radius: 50%;
-  left: -16px;
-  top: 2px;
 }
 
 @media screen and (min-width: 768px) {
@@ -194,20 +188,6 @@
   .payment-status {
     justify-self: inherit;
   }
-}
-.paid {
-  --status-clr: hsla(160, 67%, 52%, 1);
-  --status-bg-clr: hsla(160, 67%, 52%, 0.05);
-}
-
-.pending {
-  --status-clr: hsla(34, 100%, 50%, 1);
-  --status-bg-clr: hsla(34, 100%, 50%, 0.05);
-}
-
-.draft {
-  --status-clr: var(--btn-draft-clr);
-  --status-bg-clr: var(--btn-draft-bg-clr);
 }
 
 /*# sourceMappingURL=invoice-list-item.component.css.map */

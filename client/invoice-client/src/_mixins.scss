@@ -1,4 +1,5 @@
 @mixin text-primary() {
+  font-family: "League Spartan", sans-serif;
   text-align: center;
   font-size: 15px;
   font-style: normal;
@@ -8,6 +9,7 @@
 }
 
 @mixin text-secondary(){
+  font-family: "League Spartan", sans-serif;
   font-size: 13px;
   font-style: normal;
   font-weight: 500;
@@ -17,9 +19,25 @@
 }
 
 @mixin text-headline(){
+  font-family: "League Spartan", sans-serif;
   font-size: 24px;
   font-style: normal;
   font-weight: 700;
   line-height: normal;
   letter-spacing: -0.75px;
 }
+
+@mixin card() {
+  box-sizing: border-box;
+  border-radius: 8px;
+  box-shadow: 0 10px 10px -10px rgba(72, 84, 159, 0.10);
+  padding-inline: 1rem;
+}
+
+@mixin items() {
+
+  padding: 1rem;
+  border-radius: 8px 8px 0 0;
+  background: var(--item-bg);
+}
+

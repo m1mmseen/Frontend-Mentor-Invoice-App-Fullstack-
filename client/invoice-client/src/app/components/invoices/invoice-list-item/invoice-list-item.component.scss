@@ -44,13 +44,20 @@
     right: 10px;
   }
 }
+
+@media screen and (min-width: 1440px) {
+  :host {
+    width: 60%;
+  }
+}
+
 .invoice-id {
   grid-area: id;
 }
 
 .invoice-id::before{
   content: "#";
-  color: var(--text-secondary-color);
+  color: var(--text-secondary-clr);
 }
 
 .client-name {
@@ -71,33 +78,11 @@
 .total::before{
   content: "£ ";
   }
-
 .payment-status {
   grid-area: status;
   justify-self: flex-end;
-  width: 104px;
-  height: 40px;
-  border-radius: 6px;
-  text-transform: capitalize;
-  background: var(--status-bg-clr);
-  color: var(--status-clr);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  span {
-    position: relative;
-  }
-  span::before{
-    content: "";
-    width: 8px;
-    height: 8px;
-    background: var(--status-clr);
-    position: absolute;
-    border-radius: 50%;
-    left: -16px;
-    top: 2px;
-  }
 }
+
 @media screen and (min-width: 768px) {
   .client-name {
     justify-self: flex-start;
@@ -105,17 +90,4 @@
   .payment-status {
     justify-self: inherit;
   }
-}
-
-.paid {
-  --status-clr: hsla(160, 67%, 52%, 1);
-  --status-bg-clr: hsla(160, 67%, 52%, 0.05);
-}
-.pending {
-  --status-clr: hsla(34, 100%, 50%, 1);
-  --status-bg-clr: hsla(34, 100%, 50%, 0.05);
-}
-.draft {
-  --status-clr: var(--btn-draft-clr);
-  --status-bg-clr: var(--btn-draft-bg-clr);
 }

@@ -11,6 +11,8 @@ import { InvoiceDetailsComponent } from './components/invoices/invoice-details/i
 import { InvoiceListItemComponent } from './components/invoices/invoice-list-item/invoice-list-item.component';
 import { BtnComponent } from './components/shared/btn/btn.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatMenuModule} from "@angular/material/menu";
+import { PaymentStatusComponent } from './components/shared/payment-status/payment-status.component';
 
 @NgModule({
   declarations: [
@@ -21,14 +23,16 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     InvoiceDetailsComponent,
     InvoiceListItemComponent,
     BtnComponent,
+    PaymentStatusComponent,
 
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    HttpClientModule,
-    BrowserAnimationsModule
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        HttpClientModule,
+        BrowserAnimationsModule,
+        MatMenuModule
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })

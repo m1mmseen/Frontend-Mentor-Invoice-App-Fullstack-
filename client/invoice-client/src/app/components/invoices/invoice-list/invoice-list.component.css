@@ -8,7 +8,7 @@
   --main-content-background-color: hsl(240, 27%, 98%);
   --invoice-card-clr: hsla(0, 0%, 100%, 1);
   --text-primary-clr: hsla(231, 28%, 7%, 1);
-  --text-secondary-color:hsla(231, 36%, 63%, 1);
+  --text-secondary-clr:hsla(231, 36%, 63%, 1);
   --text-tertiary-clr: hsla(231, 23%, 61%, 1);
   --text-highlight-clr:hsla(252, 94%, 67%, 1);
   --btn-text-primary-clr: hsla(0, 0%, 100%, 1);
@@ -23,14 +23,15 @@
   --btn-new-clr: hsla(231, 67%, 99%, 1);
   --btn-new-hover-clr: hsla(231, 73%, 93%, 1);
   --btn-draft-clr:hsla(231, 20%, 27%, 1);
-  --btn-draft-bg-clr: hsla(231, 20%, 27%, 0.05) ;
+  --btn-draft-bg-clr: hsla(231, 20%, 27%, 0.05);
+  --item-bg: hsla(231, 67%, 99%, 1);
 }
 
 [data-theme=dark] {
   --main-content-background-color: hsl(233, 30%, 11%);
   --invoice-card-clr: hsla(233, 31%, 17%, 1);
   --text-primary-clr: hsla(0, 0%, 100%, 1);
-  --text-secondary-color:hsla(231, 36%, 63%, 1);
+  --text-secondary-clr:hsla(231, 36%, 63%, 1);
   --text-tertiary-clr: hsla(231, 75%, 93%, 1);
   --text-highlight-clr:hsla(252, 94%, 67%, 1);
   --btn-text-primary-clr: hsla(0, 0%, 100%, 1);
@@ -45,7 +46,8 @@
   --btn-new-clr: hsla(231, 67%, 99%, 1);
   --btn-new-hover-clr: hsla(231, 73%, 93%, 1);
   --btn-draft-clr:hsla(231, 75%, 93%, 1);
-  --btn-draft-bg-clr: hsla(231, 75%, 93%, 0.05) ;
+  --btn-draft-bg-clr: hsla(231, 75%, 93%, 0.05);
+  --item-bg: hsla(233, 30%, 21%, 1);
 }
 
 [data-btn-class=delete] button {
@@ -94,12 +96,21 @@
   }
 }
 
+[data-btn-class=paid] button {
+  background: var(--btn-primary-clr);
+  color: var(--btn-text-primary-clr);
+  width: 149px;
+}
+[data-btn-class=paid] button:hover {
+  background: var(--btn-primary-hover-clr);
+}
+
 :host {
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   gap: 1rem;
   height: 100svh;
   overflow-y: scroll;
@@ -114,10 +125,16 @@
   justify-content: space-between;
 }
 
+@media screen and (min-width: 1440px) {
+  .invoice-list-header {
+    width: 60%;
+  }
+}
 .title {
   text-align: left;
 }
 .title .headline {
+  font-family: "League Spartan", sans-serif;
   font-size: 24px;
   font-style: normal;
   font-weight: 700;
@@ -125,15 +142,16 @@
   letter-spacing: -0.75px;
 }
 
-.subtitle {
+.subtitle, .subtitle-empty {
+  font-family: "League Spartan", sans-serif;
   font-size: 13px;
   font-style: normal;
   font-weight: 500;
   line-height: 15px;
   letter-spacing: -0.1px;
-  color: var(--text-secondary-color);
+  color: var(--text-secondary-clr);
 }
-.subtitle::after {
+.subtitle::after, .subtitle-empty::after {
   content: " Invoices";
 }
 
@@ -153,12 +171,50 @@
 
 .filter {
   padding-inline: 5px;
+  position: relative;
 }
 .filter span {
   margin-right: 0.5rem;
 }
 .filter:hover {
   cursor: pointer;
+}
+.filter label {
+  text-transform: capitalize;
+  padding-left: 0.5rem;
+}
+
+@media screen and (min-width: 768px) {
+  .filter span::after {
+    content: " by status";
+  }
+}
+.filter-content {
+  width: 192px;
+  height: 128px;
+  position: absolute;
+  top: 35px;
+  left: -45px;
+  background: var(--invoice-card-clr);
+  border-radius: 8px;
+  box-shadow: 0 10px 20px 0 rgba(72, 84, 159, 0.25);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-evenly;
+  padding: 1rem;
+  z-index: 5;
+  opacity: 1;
+  border: none;
+  transition: height 0.5s linear, opacity 0.7s;
+}
+
+.filter-content.hidden {
+  height: 0;
+  opacity: 0;
+  z-index: -1;
+  pointer-events: none;
+  transition: height 1s linear, opacity 0.1s;
 }
 
 .btn-new {
@@ -190,6 +246,7 @@
   right: 9px;
   bottom: 16px;
   border-radius: 50%;
+  font-family: "League Spartan", sans-serif;
   text-align: center;
   font-size: 15px;
   font-style: normal;
@@ -204,6 +261,10 @@
     content: "New Invoice";
     right: 15px;
   }
+}
+.empty-invoice-list {
+  width: 327px;
+  transform: translateY(50%);
 }
 
 /*# sourceMappingURL=invoice-list.component.css.map */

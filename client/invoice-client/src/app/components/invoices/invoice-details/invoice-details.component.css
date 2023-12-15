@@ -1,3 +1,328 @@
+@charset "UTF-8";
+@font-face {
+  font-family: "League Spartan";
+  src: url("assets/font/LeagueSpartan-VariableFont_wght.ttf");
+  font-weight: 100 900;
+  font-style: normal;
+}
+[data-theme=light] {
+  --main-content-background-color: hsl(240, 27%, 98%);
+  --invoice-card-clr: hsla(0, 0%, 100%, 1);
+  --text-primary-clr: hsla(231, 28%, 7%, 1);
+  --text-secondary-clr:hsla(231, 36%, 63%, 1);
+  --text-tertiary-clr: hsla(231, 23%, 61%, 1);
+  --text-highlight-clr:hsla(252, 94%, 67%, 1);
+  --btn-text-primary-clr: hsla(0, 0%, 100%, 1);
+  --btn-text-secondary-clr: hsla(231, 36%, 63%, 1);
+  --btn-text-tertiary-clr: hsla(231, 20%, 61%, 1);
+  --btn-primary-clr: hsl(252, 94%, 67%);
+  --btn-primary-hover-clr:hsla(252, 100%, 73%, 1);
+  --btn-delete-clr: hsla(0, 80%, 63%, 1);
+  --btn-delete-hover-clr: hsla(0, 100%, 80%, 1);
+  --btn-edit-clr: hsla(231, 67%, 99%, 1);
+  --btn-edit-hover-clr: hsla(231, 73%, 93%, 1);
+  --btn-new-clr: hsla(231, 67%, 99%, 1);
+  --btn-new-hover-clr: hsla(231, 73%, 93%, 1);
+  --btn-draft-clr:hsla(231, 20%, 27%, 1);
+  --btn-draft-bg-clr: hsla(231, 20%, 27%, 0.05);
+  --item-bg: hsla(231, 67%, 99%, 1);
+}
 
+[data-theme=dark] {
+  --main-content-background-color: hsl(233, 30%, 11%);
+  --invoice-card-clr: hsla(233, 31%, 17%, 1);
+  --text-primary-clr: hsla(0, 0%, 100%, 1);
+  --text-secondary-clr:hsla(231, 36%, 63%, 1);
+  --text-tertiary-clr: hsla(231, 75%, 93%, 1);
+  --text-highlight-clr:hsla(252, 94%, 67%, 1);
+  --btn-text-primary-clr: hsla(0, 0%, 100%, 1);
+  --btn-text-secondary-clr: hsla(231, 36%, 63%, 1);
+  --btn-text-tertiary-clr: hsla(231, 20%, 61%, 1);
+  --btn-primary-clr: hsl(252, 94%, 67%);
+  --btn-primary-hover-clr:hsla(252, 100%, 73%, 1);
+  --btn-delete-clr: hsla(0, 80%, 63%, 1);
+  --btn-delete-hover-clr: hsla(0, 100%, 80%, 1);
+  --btn-edit-clr: hsla(233, 30%, 21%, 1);
+  --btn-edit-hover-clr: hsla(0, 0%, 100%, 1);
+  --btn-new-clr: hsla(231, 67%, 99%, 1);
+  --btn-new-hover-clr: hsla(231, 73%, 93%, 1);
+  --btn-draft-clr:hsla(231, 75%, 93%, 1);
+  --btn-draft-bg-clr: hsla(231, 75%, 93%, 0.05);
+  --item-bg: hsla(233, 30%, 21%, 1);
+}
+
+[data-btn-class=delete] button {
+  background: var(--btn-delete-clr);
+  color: var(--btn-text-primary-clr);
+  width: 89px;
+}
+[data-btn-class=delete] button:hover {
+  background: var(--btn-delete-hover-clr);
+}
+
+[data-btn-class=edit] button {
+  background: var(--btn-edit-clr);
+  color: var(--btn-text-secondary-clr);
+  width: 73px;
+}
+[data-btn-class=edit] button:hover {
+  background: var(--btn-edit-hover-clr);
+}
+
+[data-btn-class=new] button {
+  background: var(--btn-new-clr);
+  color: var(--btn-text-secondary-clr);
+  width: 89px;
+}
+[data-btn-class=new] button:hover {
+  background: var(--btn-new-hover-clr);
+}
+@media screen and (min-width: 768px) {
+  [data-btn-class=new] button {
+    width: 150px;
+  }
+}
+
+[data-btn-class=general] button {
+  background: var(--btn-primary-clr);
+  color: var(--btn-text-primary-clr);
+  width: 89px;
+}
+[data-btn-class=general] button:hover {
+  background: var(--btn-primary-hover-clr);
+}
+@media screen and (min-width: 768px) {
+  [data-btn-class=general] button {
+    width: 150px;
+  }
+}
+
+[data-btn-class=paid] button {
+  background: var(--btn-primary-clr);
+  color: var(--btn-text-primary-clr);
+  width: 149px;
+}
+[data-btn-class=paid] button:hover {
+  background: var(--btn-primary-hover-clr);
+}
+
+:host {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 1rem;
+  height: 100svh;
+  overflow-y: scroll;
+  padding-bottom: 500px;
+}
+
+.details-navigation {
+  width: 87%;
+  display: flex;
+  align-items: center;
+}
+.details-navigation img {
+  width: 10px;
+  height: 10px;
+  margin-bottom: 2px;
+}
+.details-navigation button {
+  background: none;
+  border: none;
+  font-family: "League Spartan", sans-serif;
+  text-align: center;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 15px;
+  letter-spacing: -0.25px;
+  color: var(--text-primary-clr);
+}
+
+.invoice-actions {
+  width: 87%;
+  height: 91px;
+  background: var(--invoice-card-clr);
+  box-sizing: border-box;
+  border-radius: 8px;
+  box-shadow: 0 10px 10px -10px rgba(72, 84, 159, 0.1);
+  padding-inline: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.invoice-status {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  height: 90px;
+}
+.invoice-status small {
+  color: var(--text-secondary-clr);
+}
+
+.invoice-btn-group {
+  background: var(--invoice-card-clr);
+  padding: 1rem 0;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: stretch;
+  gap: 0.3rem;
+}
+
+@media screen and (min-width: 768px) {
+  .invoice-status {
+    justify-content: flex-start;
+  }
+  .invoice-btn-group {
+    position: static;
+    justify-content: space-around;
+  }
+}
+.invoice {
+  width: 87%;
+  box-sizing: border-box;
+  border-radius: 8px;
+  box-shadow: 0 10px 10px -10px rgba(72, 84, 159, 0.1);
+  padding-inline: 1rem;
+  background: var(--invoice-card-clr);
+  font-family: "League Spartan", sans-serif;
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 15px;
+  letter-spacing: -0.1px;
+  color: var(--text-tertiary-clr);
+  text-align: left;
+  padding: 1rem;
+}
+
+.invoice-details {
+  display: grid;
+  grid-template-areas: "invoice-header invoice-header" "sender-address sender-address" "billing-information client-address" "send-to send-to";
+  row-gap: 1rem;
+}
+.invoice-details p {
+  margin: 0.3rem 0;
+}
+
+.invoice-id::before {
+  content: "#";
+  color: var(--text-secondary-clr);
+}
+
+.invoice-header {
+  grid-area: invoice-header;
+}
+
+.sender-address {
+  grid-area: sender-address;
+}
+
+.billing-information {
+  grid-area: billing-information;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.client-address {
+  grid-area: client-address;
+}
+
+.send-to {
+  grid-area: send-to;
+}
+
+@media screen and (min-width: 768px) {
+  .invoice-details {
+    grid-template-areas: "invoice-header invoice-header invoice-header sender-address" "billing-information client-address send-to send-to";
+  }
+  .invoice-details .sender-address {
+    text-align: right;
+  }
+}
+.items {
+  margin-top: 20px;
+}
+.items table {
+  width: 100%;
+  padding: 1rem;
+  border-radius: 8px 8px 0 0;
+  background: var(--item-bg);
+}
+.items table th {
+  font-weight: 500;
+  padding-bottom: 0.5rem;
+}
+.items table th:nth-of-type(2) {
+  text-align: center;
+}
+.items table th:last-of-type, .items table th:nth-of-type(3) {
+  text-align: right;
+}
+.items table td {
+  font-family: "League Spartan", sans-serif;
+  text-align: center;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 15px;
+  letter-spacing: -0.25px;
+  padding: 0.7rem 0;
+}
+.items table td:first-of-type {
+  text-align: left;
+}
+.items table td:last-of-type, .items table td:nth-of-type(3) {
+  text-align: right;
+}
+.items .amount {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem;
+  border-radius: 0 0 8px 8px;
+  background: hsl(231, 20%, 27%);
+  color: hsl(0, 0%, 100%);
+}
+.items .item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem;
+  border-radius: 8px 8px 0 0;
+  background: var(--item-bg);
+}
+.items .currency::before {
+  content: "£ ";
+}
+
+.accent {
+  font-family: "League Spartan", sans-serif;
+  text-align: center;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 15px;
+  letter-spacing: -0.25px;
+  color: var(--text-primary-clr);
+  text-align: left;
+  padding: 0.5rem 0;
+}
+
+@media screen and (min-width: 1440px) {
+  .details-navigation, .invoice-actions, .invoice {
+    width: 60%;
+  }
+}
 
 /*# sourceMappingURL=invoice-details.component.css.map */

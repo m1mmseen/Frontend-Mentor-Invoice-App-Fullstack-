@@ -1,0 +1,39 @@
+.payment-status {
+  grid-area: status;
+  justify-self: flex-end;
+  width: 104px;
+  height: 40px;
+  border-radius: 6px;
+  text-transform: capitalize;
+  background: var(--status-bg-clr);
+  color: var(--status-clr);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  span {
+    position: relative;
+  }
+  span::before{
+    content: "";
+    width: 8px;
+    height: 8px;
+    background: var(--status-clr);
+    position: absolute;
+    border-radius: 50%;
+    left: -16px;
+    top: 2px;
+  }
+}
+
+.paid {
+  --status-clr: hsla(160, 67%, 52%, 1);
+  --status-bg-clr: hsla(160, 67%, 52%, 0.05);
+}
+.pending {
+  --status-clr: hsla(34, 100%, 50%, 1);
+  --status-bg-clr: hsla(34, 100%, 50%, 0.05);
+}
+.draft {
+  --status-clr: var(--btn-draft-clr);
+  --status-bg-clr: var(--btn-draft-bg-clr);
+}
