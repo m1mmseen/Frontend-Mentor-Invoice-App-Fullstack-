@@ -14,7 +14,7 @@
           </div>
         </div>
     </div>
-    <btn data-btn-class="general"></btn>
+    <btn data-btn-class="general" mat-button (click)="openInvoiceModal()"></btn>
   </div>
 </div>
 
@@ -25,6 +25,13 @@
   routerLink="/invoice-details/{{invoice.id}}">
 </invoice-list-item>
 
+<!--<cdk-virtual-scroll-viewport [itemSize]="72">
+  <invoice-list-item
+    *cdkVirtualFor="let invoice of filteredInvoices"
+    [invoice]="invoice"
+    routerLink="/invoice-details/{{invoice.id}}">
+  </invoice-list-item>
+</cdk-virtual-scroll-viewport>-->
 
 
 <div class="empty-invoice-list" *ngIf="invoices.length === 0">

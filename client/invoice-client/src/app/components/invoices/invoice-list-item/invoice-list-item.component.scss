@@ -18,10 +18,9 @@
 
   align-items: center;
   justify-items: flex-start;
+  transition: .3s;
 
-  &:hover {
-    cursor: pointer;
-  }
+
 }
 
 @media screen and (min-width: 768px) {
@@ -32,6 +31,11 @@
     grid-template-areas:
         'id dueDate client total status';
     position: relative;
+
+    &:hover {
+      cursor: pointer;
+      transform: translateX(10px);
+    }
   }
 
   :host::after {

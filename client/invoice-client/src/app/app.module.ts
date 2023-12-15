@@ -13,6 +13,14 @@ import { BtnComponent } from './components/shared/btn/btn.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatMenuModule} from "@angular/material/menu";
 import { PaymentStatusComponent } from './components/shared/payment-status/payment-status.component';
+import {ScrollingModule} from '@angular/cdk/scrolling';
+import {Scroll} from "@angular/router";
+import { InvoiceModalComponent } from './components/shared/invoice-modal/invoice-modal.component';
+import {MatDialogModule} from "@angular/material/dialog";
+import { MatButtonModule} from "@angular/material/button";
+import { DeleteModalComponent } from './components/shared/delete-modal/delete-modal.component';
+
+
 
 @NgModule({
   declarations: [
@@ -24,6 +32,8 @@ import { PaymentStatusComponent } from './components/shared/payment-status/payme
     InvoiceListItemComponent,
     BtnComponent,
     PaymentStatusComponent,
+    InvoiceModalComponent,
+    DeleteModalComponent,
 
   ],
     imports: [
@@ -31,7 +41,10 @@ import { PaymentStatusComponent } from './components/shared/payment-status/payme
         AppRoutingModule,
         HttpClientModule,
         BrowserAnimationsModule,
-        MatMenuModule
+        MatMenuModule,
+        ScrollingModule,
+        MatDialogModule,
+        MatButtonModule
     ],
   providers: [],
   bootstrap: [AppComponent]

@@ -2,6 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {InvoiceService} from "../../../services/invoice.service";
 import {Invoice} from "../../../interfaces";
+import {InvoiceModalComponent} from "../../shared/invoice-modal/invoice-modal.component";
+import {MatDialog} from "@angular/material/dialog";
 
 @Component({
   selector: 'invoice-list',
@@ -17,7 +19,10 @@ export class InvoiceListComponent implements OnInit {
   invoices: Invoice[] = [];
   selected: string | null = null;
 
-  constructor(private http: HttpClient, private invoiceService: InvoiceService) {
+  constructor(
+    private http: HttpClient,
+    private invoiceService: InvoiceService,
+    private dialog: MatDialog) {
   }
 
   ngOnInit() {
@@ -53,7 +58,23 @@ export class InvoiceListComponent implements OnInit {
     } else {
       this.filteredInvoices = this.invoices.filter(element =>  element.status === this.selected);
     }
-
   }
 
+  openInvoiceModal() {
+    if (window.innerWidth < 616) {    this.dialog.open(InvoiceModalComponent, {
+      maxWidth: '100svw',
+      width: '100%' ,
+      height: '100%',
+      position: {top: '0', left: '0', right: '0'},
+    });
+    } else {
+      this.dialog.open(InvoiceModalComponent, {
+        width: '616px',
+        height: '100%',
+        position: {top: '0', left: '0'}
+      });
+    }
+  }
+
+  protected readonly window = window;
 }

@@ -11,8 +11,8 @@
     <payment-status [invoice]="invoice"></payment-status>
   </div>
   <div class="invoice-btn-group">
-    <btn data-btn-class="edit">Edit</btn>
-    <btn data-btn-class="delete">Delete</btn>
+    <btn data-btn-class="edit" mat-button (click)="openInvoiceModal(invoice)">Edit</btn>
+    <btn data-btn-class="delete" mat-button (click)="openDeleteModal(invoice.id)">Delete</btn>
     <btn data-btn-class="paid" *ngIf="invoice.status !== 'paid'">Mark as paid</btn>
     <btn data-btn-class="paid" *ngIf="invoice.status === 'paid'">Mark as pending</btn>
   </div>

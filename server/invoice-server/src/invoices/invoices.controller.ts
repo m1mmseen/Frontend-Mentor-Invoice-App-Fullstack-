@@ -34,10 +34,11 @@ export class InvoicesController {
         return "Updated";
     }
 
-    @Delete(':id')
-        deleteInvoice(@Param('id') invoiceId: string) {
-        this.invoiceService.deleteInvoice(invoiceId);
-        return "Deleted";
+    @Delete(':invoiceId')
+        deleteInvoice(@Param('invoiceId') id: string) {
+        console.log("Auf dem Server angekommen");
+        return this.invoiceService.deleteInvoice(id);
+
     }
 
 }

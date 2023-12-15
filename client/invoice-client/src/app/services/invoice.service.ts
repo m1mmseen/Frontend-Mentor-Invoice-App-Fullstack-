@@ -18,6 +18,15 @@ export class InvoiceService {
     return this.http.get<Invoice>('http://localhost:3000/invoices/' + id).pipe(catchError(this.handleError))
   }
 
+  deleteInvoice(id: string) {
+    console.log("im Service angekommen");
+    return this.http.delete('http://localhost:3000/invoices/' + id).pipe(catchError(this.handleError))
+  }
+
+  markAsPaid() {
+
+  }
+
 
   handleError(error: HttpErrorResponse) {
     let errorMessage:string;

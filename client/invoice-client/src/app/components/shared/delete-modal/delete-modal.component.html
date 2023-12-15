@@ -1,0 +1,8 @@
+<h1 >Confirm Deletion</h1>
+<div >
+  <p class="dialog-content">Are you sure you want to delete invoice #{{invoiceId}}? This action cannot be undone.</p>
+</div>
+<div class="dialog-actions">
+  <btn data-btn-class="edit" mat-dialog-close>Cancel</btn>
+  <btn data-btn-class="delete" (click)="deleteInvoice()" mat-dialog-close>Delete</btn>
+</div>

@@ -31,17 +31,18 @@ export class InvoicesService {
         if (invoice) {
             return invoice;
         } else {
-            throw new NotFoundException("Could not find invoice with this id")
+            return "No Invoice wth this id";
         }
 
     }
 
     async deleteInvoice(invoiceId: string) {
+        console.log(invoiceId);
         const invoice = await this.findInvoice(invoiceId);
         if (invoice) {
             await this.invoiceRepo.remove(invoice);
         } else {
-            throw new NotFoundException("Could not find invoice with this id")
+            return "No Invoice wth this id";
         }
     }
 

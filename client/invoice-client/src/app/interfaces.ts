@@ -33,3 +33,8 @@ export interface Item {
   price: number
   total: number
 }
+
+export interface DeleteData {
+  invoiceId: string;
+  deletion: boolean
+}
